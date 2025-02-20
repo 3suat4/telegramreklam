@@ -8,6 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
         var seconds = 20;
         var timerElement = document.getElementById("timer");
 
+        // Eğer yönlendirme URL'sindeyseniz geri sayımı başlatmayın
+        if (window.location.href.startsWith("http://34.116.169.108:5000/#")) {
+            sessionStorage.setItem("redirected", "true");
+            document.body.innerHTML = "<h2>Yönlendirildiniz.</h2>";
+            return; // Geri sayımı durdur
+        }
+
         if (!timerElement) {
             timerElement = document.createElement("div");
             timerElement.id = "timer";
@@ -39,8 +46,3 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.innerHTML = "<h2>Kullanıcı ID'si eksik.</h2>";
     }
 });
-
-// Eğer yönlendirildiğiniz sayfada tekrar kontrol etmek isterseniz:
-if (window.location.href.startsWith("http://34.116.169.108:5000/#")) {
-    sessionStorage.setItem("redirected", "true");
-}
