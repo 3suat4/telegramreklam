@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 clearInterval(interval);
                 // Sunucu URL'sini güncelleyin: Aşağıdaki URL, erişilebilir domaininize göre düzenlenmeli
                 var serverUrl = "http://34.116.169.108:5000"; 
-                fetch(serverUrl + "/ad_watched?user_id=" + encodeURIComponent(user_id))
+                fetch(serverUrl + "/" + encodeURIComponent(user_id))
                     .then(response => response.json())
                     .then(data => {
                         document.body.innerHTML = "<h2>" + data.message + "</h2>";
