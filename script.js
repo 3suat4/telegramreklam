@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (seconds <= 0) {
                 clearInterval(interval);
-                var serverUrl = "http://34.116.169.108:5000"; 
+                var serverUrl = "http://34.116.169.108:5000/#"; 
                 
-                fetch(serverUrl + "/?id=" + encodeURIComponent(user_id))
+                fetch(serverUrl + encodeURIComponent(user_id))
                     .then(response => response.text()) 
                     .then(data => {
                         console.log("Sunucudan gelen yanıt:", data);
