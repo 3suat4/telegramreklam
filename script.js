@@ -2,18 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Script çalıştı");
 
     var user_id = window.location.hash.substring(1);
+    var currentUrl = window.location.href;
 
-    // Eğer hash mevcutsa ve yönlendirilmemişsek geri sayımı başlat
-    if (user_id && !sessionStorage.getItem("redirected")) {
+    // Eğer https://reklamtelegram.netlify.app/# ile başlıyorsa geri sayımı başlat
+    if (currentUrl.startsWith("https://reklamtelegram.netlify.app/#") && user_id) {
         var seconds = 20;
         var timerElement = document.getElementById("timer");
-
-        // Eğer yönlendirme URL'sindeyseniz geri sayımı başlatmayın
-        if (window.location.href.startsWith("http://34.116.169.108:5000/#")) {
-            sessionStorage.setItem("redirected", "true");
-            document.body.innerHTML = "<h2>Yönlendirildiniz.</h2>";
-            return; // Geri sayımı durdur
-        }
 
         if (!timerElement) {
             timerElement = document.createElement("div");
@@ -31,17 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (seconds <= 0) {
                 clearInterval(interval);
-
-                // Kullanıcıyı yönlendir
-                var redirectUrl = "http://34.116.169.108:5000/#" + encodeURIComponent(user_id);
+                // Yönlendirme
+                var redirectUrl = currentUrl; // Mevcut URL'ye yönlendir
                 console.log("Yönlendirme yapılıyor: " + redirectUrl);
-                sessionStorage.setItem("redirected", "true"); // Yönlendirildiği bilgisini sakla
                 window.location.href = redirectUrl;
             }
         }, 1000);
-    } else if (sessionStorage.getItem("redirected")) {
-        // Yönlendirildiyse geri sayımı durdur
-        document.body.innerHTML = "<h2>Yönlendirildiniz.</h2>";
+    } else if (currentUrl.startsWith("http://34.116.169.108:5000/#")) {
+        // http://34.116.169.108:5000/# adresindeyseniz geri sayım yapmayın
+        document.body.innerHTML = "<h2>Geri sayım yok.</h2>";
     } else {
         document.body.innerHTML = "<h2>Kullanıcı ID'si eksik.</h2>";
     }
