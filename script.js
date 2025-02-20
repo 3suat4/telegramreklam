@@ -4,8 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
     var user_id = window.location.hash.substring(1);
     var currentUrl = window.location.href;
 
+    // Eğer kullanıcı ID'si yoksa, mesaj göster
+    if (!user_id) {
+        document.body.innerHTML = "<h2>Kullanıcı ID'si eksik.</h2>";
+        return;
+    }
+
     // Eğer https://reklamtelegram.netlify.app/# ile başlıyorsa geri sayımı başlat
-    if (currentUrl.startsWith("https://reklamtelegram.netlify.app/#") && user_id) {
+    if (currentUrl.startsWith("https://reklamtelegram.netlify.app/#")) {
         var seconds = 20;
         var timerElement = document.getElementById("timer");
 
@@ -26,15 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
             if (seconds <= 0) {
                 clearInterval(interval);
                 // Yönlendirme
-                var redirectUrl = currentUrl; // Mevcut URL'ye yönlendir
-                console.log("Yönlendirme yapılıyor: " + redirectUrl);
-                window.location.href = redirectUrl;
+                console.log("Yönlendirme yapılıyor: " + currentUrl);
+                window.location.href = currentUrl; // Mevcut URL'ye yönlendir
             }
         }, 1000);
     } else if (currentUrl.startsWith("http://34.116.169.108:5000/#")) {
         // http://34.116.169.108:5000/# adresindeyseniz geri sayım yapmayın
         document.body.innerHTML = "<h2>Geri sayım yok.</h2>";
-    } else {
-        document.body.innerHTML = "<h2>Kullanıcı ID'si eksik.</h2>";
     }
 });
