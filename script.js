@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var user_id = window.location.hash.substring(1);
 
-    // Eğer hash mevcutsa ve yönlendirilmemişsek geri sayımı başlat
+    // Eğer hash mevcutsa ve yönlendirilmemişse geri sayımı başlat
     if (user_id && !sessionStorage.getItem("redirected")) {
         var seconds = 20;
         var timerElement = document.getElementById("timer");
@@ -24,7 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (seconds <= 0) {
                 clearInterval(interval);
-                redirectToReward(user_id);
+                // Zaman dolduğunda geri sayım gizlenir ve ödül al butonu görünür hale gelir.
+                timerElement.style.display = "none";
+                var rewardButton = document.getElementById("rewardButton");
+                if (rewardButton) {
+                    rewardButton.style.display = "inline-block";
+                }
             }
         }, 1000);
     } else if (sessionStorage.getItem("redirected")) {
