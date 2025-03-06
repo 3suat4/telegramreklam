@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Eğer hash mevcutsa ve yönlendirilmemişse geri sayımı başlat
   if (user_id && !sessionStorage.getItem("redirected")) {
-    var seconds = 20;
+    var seconds = 0;
     var timerElement = document.getElementById("timer");
 
     if (!timerElement) {
