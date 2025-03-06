@@ -1,27 +1,60 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // URL hash'indeki kullanıcı ID'sini alıyoruz (örn: "#6107402611")
+  console.log("Script çalıştı");
+
   var user_id = window.location.hash.substring(1);
-  if (!user_id) {
-    console.error("Kullanıcı ID'si bulunamadı.");
-    return;
+
+  // Eğer hash mevcutsa ve yönlendirilmemişse geri sayımı başlat
+  if (user_id && !sessionStorage.getItem("redirected")) {
+    var seconds = 0;
+    var timerElement = document.getElementById("timer");
+
+    if (!timerElement) {
+      timerElement = document.createElement("div");
+      timerElement.id = "timer";
+      timerElement.style.fontSize = "24px";
+      timerElement.style.marginTop = "20px";
+      document.body.appendChild(timerElement);
+    }
+
+    timerElement.innerText = "Geri Sayım: " + seconds + " saniye";
+
+    var interval = setInterval(function () {
+      seconds--;
+      timerElement.innerText = "Geri Sayım: " + seconds + " saniye";
+
+      if (seconds <= 0) {
+        clearInterval(interval);
+        // Süre bitince geri sayım mesajı gizlenir ve "Ödül Al" butonu görünür hale gelir.
+        timerElement.style.display = "none";
+        var rewardButton = document.getElementById("rewardButton");
+        if (rewardButton) {
+          rewardButton.style.display = "inline-block";
+        }
+      }
+    }, 1000);
+  } else if (sessionStorage.getItem("redirected")) {
+    document.body.innerHTML = "<h2>Yönlendirildiniz.</h2>";
+  } else {
+    document.body.innerHTML = "<h2>Kullanıcı ID'si eksik.</h2>";
   }
 
-  // Page Shortener ayarları
-  var api = "633cbc606bc76f0042f1dc1eaf3dc61d2f5f13bf";
-  var ct = "0";
-
-  // Aylink.co Page Shortener script'ini dinamik olarak ekliyoruz
-  var scriptTag = document.createElement("script");
-  scriptTag.src = "//aylink.co/t89s3.js";
-  scriptTag.async = true;
-  document.head.appendChild(scriptTag);
-
-  // Hedef URL: artık netlify adresine değil, http://34.116.169.108:5000/#[kullanıcıID]'ye yönlendiriyoruz
-  var targetUrl = "http://34.116.169.108:5000/#" + encodeURIComponent(user_id);
-  console.log("Oluşturulan hedef URL: " + targetUrl);
-
-  // 3 saniye sonra otomatik olarak hedef URL'ye yönlendiriyoruz
-  setTimeout(function () {
-    window.location.href = targetUrl;
-  }, 3000);
+  // Ödül Al butonu için tıklama olayı
+  var rewardButton = document.getElementById("rewardButton");
+  if (rewardButton) {
+    rewardButton.addEventListener("click", function () {
+      if (user_id) {
+        redirectToReward(user_id);
+      } else {
+        alert("Ödül almak için kullanıcı ID'si bulunamadı!");
+      }
+    });
+  }
 });
+
+// Kullanıcıyı yönlendiren fonksiyon
+function redirectToReward(user_id) {
+  var redirectUrl = "http://34.116.169.108:5000/#" + encodeURIComponent(user_id);
+  console.log("Yönlendirme yapılıyor: " + redirectUrl);
+  sessionStorage.setItem("redirected", "true");
+  window.location.href = redirectUrl;
+}
