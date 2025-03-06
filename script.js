@@ -1,22 +1,24 @@
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("Script çalıştı");
-
-  var rewardButton = document.getElementById("rewardButton");
-  var userIdInput = document.getElementById("userIdInput");
-
-  rewardButton.addEventListener("click", function () {
-    var user_id = userIdInput.value.trim();
-    if (user_id) {
-      redirectToReward(user_id);
-    } else {
-      alert("Lütfen kullanıcı ID'sini giriniz.");
-    }
-  });
-});
-
-// Kullanıcıyı ödül sitesine yönlendiren fonksiyon
-function redirectToReward(user_id) {
-  var redirectUrl = "http://34.116.169.108:5000/#" + encodeURIComponent(user_id);
-  console.log("Yönlendirme yapılıyor: " + redirectUrl);
-  window.location.href = redirectUrl;
-}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ödül Sayfası</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Page Shortener -->
+  <script>
+    var api= "633cbc606bc76f0042f1dc1eaf3dc61d2f5f13bf";
+    var ct= "0";
+  </script>
+  <script src="//aylink.co/t89s3.js"></script>
+  <!-- Page Shortener end -->
+</head>
+<body>
+  <main>
+    <h1>Ödül Sayfasına Hoş Geldiniz!</h1>
+    <p>Aşağıdaki bağlantıya tıklayarak ödül sitenize ulaşabilirsiniz:</p>
+    <a href="https://reklamtelegram.netlify.app/" target="_blank">Ödül Sitesi</a>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
