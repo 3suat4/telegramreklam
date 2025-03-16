@@ -44,12 +44,6 @@
     #rewardButton:hover:not(:disabled) {
       transform: scale(1.05);
     }
-    /* Timer */
-    #timer {
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
     /* Footer */
     footer {
       background-color: #1a237e;
@@ -70,11 +64,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarContent">
-         <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
-            <li class="nav-item"><a class="nav-link" href="privacy.html">Gizlilik Politikası</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
-         </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
+          <li class="nav-item"><a class="nav-link" href="privacy.html">Gizlilik Politikası</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -86,9 +80,7 @@
       <p class="lead">
         Telegram bot entegrasyonlu; tıklama, seviye, bonus, slot makinesi, yatırım, referans ve haftalık ödüller gibi pek çok özelliğe sahip.
       </p>
-      <!-- Geri sayım için alan -->
-      <div id="timer">Geri Sayım: <span id="timerCountdown">20</span> saniye</div>
-      <!-- Ödül Al Butonu (Üye kontrolü sonrasında gösterilecek) -->
+      <!-- Ödül Al Butonu (Geri sayım buton içinde gösterilecek) -->
       <button id="rewardButton" class="btn btn-warning mt-4" disabled>
         Ödül Al (<span id="buttonCountdown">20</span> s)
       </button>
@@ -113,7 +105,7 @@
     <div class="container">
       <h2 class="mb-4 text-center">Sistem Hakkında</h2>
       <p class="text-center mb-5">
-         Bu sistem, arka planda çalışan Telegram botu ile entegre çalışarak kullanıcıların eğlenceli bir oyun deneyimi yaşamasını sağlıyor. Aşağıda, sistemde bulunan temel özellikler sade bir dille anlatılmıştır:
+        Bu sistem, arka planda çalışan Telegram botu ile entegre çalışarak kullanıcıların eğlenceli bir oyun deneyimi yaşamasını sağlıyor. Aşağıda, sistemde bulunan temel özellikler sade bir dille anlatılmıştır:
       </p>
       <div class="accordion" id="systemFeatures">
         <!-- Tıklama ve Puan Kazanma -->
@@ -202,18 +194,15 @@
       // URL hash'inden kullanıcı ID'sini alıyoruz.
       var user_id = window.location.hash.substring(1);
       var rewardButton = document.getElementById("rewardButton");
-      var timerElem = document.getElementById("timer");
-      var timerCountdown = document.getElementById("timerCountdown");
       var buttonCountdown = document.getElementById("buttonCountdown");
 
-      // Eğer kullanıcı ID'si (hash) yoksa, ödül butonunu ve timer'ı gizle.
+      // Eğer kullanıcı ID'si (hash) yoksa, ödül butonunu gizle.
       if (!user_id) {
         rewardButton.style.display = "none";
-        timerElem.style.display = "none";
         return;
       }
 
-      // Üye ise, 20 saniyelik geri sayımı başlat.
+      // Üye kabul ediliyorsa, 20 saniyelik geri sayımı başlat.
       var timeLeft = 20;
       rewardButton.style.display = "inline-block";
       rewardButton.disabled = true;
@@ -221,9 +210,7 @@
 
       var interval = setInterval(function() {
         timeLeft--;
-        timerCountdown.textContent = timeLeft;
         buttonCountdown.textContent = timeLeft;
-
         if (timeLeft <= 0) {
           clearInterval(interval);
           rewardButton.disabled = false;
