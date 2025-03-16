@@ -86,9 +86,9 @@
       <p class="lead">
         Telegram bot entegrasyonlu; tıklama, seviye, bonus, slot makinesi, yatırım, referans ve haftalık ödüller gibi pek çok özelliğe sahip.
       </p>
-      <!-- Geri sayım için alan; doğru id'ler eklenmiş -->
+      <!-- Geri sayım için alan -->
       <div id="timer">Geri Sayım: <span id="timerCountdown">20</span> saniye</div>
-      <!-- Ödül Al Butonu (üye kontrolü sonrasında gösterilecek) -->
+      <!-- Ödül Al Butonu (Üye kontrolü sonrasında gösterilecek) -->
       <button id="rewardButton" class="btn btn-warning mt-4" disabled>
         Ödül Al (<span id="buttonCountdown">20</span> s)
       </button>
@@ -199,20 +199,21 @@
   <!-- Üyelik Kontrol ve Geri Sayım Scripti -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      var isMember = localStorage.getItem("isMember");
+      // URL hash'inden kullanıcı ID'sini alıyoruz.
+      var user_id = window.location.hash.substring(1);
       var rewardButton = document.getElementById("rewardButton");
       var timerElem = document.getElementById("timer");
       var timerCountdown = document.getElementById("timerCountdown");
       var buttonCountdown = document.getElementById("buttonCountdown");
 
-      // Üyelik kontrolü: Üye değilse ödül butonunu ve timer'ı gizle.
-      if (!isMember || isMember !== "true") {
+      // Eğer kullanıcı ID'si (hash) yoksa, ödül butonunu ve timer'ı gizle.
+      if (!user_id) {
         rewardButton.style.display = "none";
         timerElem.style.display = "none";
         return;
       }
 
-      // Üye ise geri sayımı başlat.
+      // Üye ise, 20 saniyelik geri sayımı başlat.
       var timeLeft = 20;
       rewardButton.style.display = "inline-block";
       rewardButton.disabled = true;
