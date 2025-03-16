@@ -96,7 +96,7 @@
             <p class="lead">
               Telegram bot entegrasyonlu; tıklama, seviye, bonus, slot makinesi, yatırım, referans ve haftalık ödüller gibi pek çok özelliğe sahip.
             </p>
-            <!-- Büyütülmüş, dikkat çekici ve 20 saniye geri sayımlı Ödül Al Butonu -->
+            <!-- Ödül Al Butonu (Sadece üye olanlarda gösterilecek) -->
             <button id="rewardButton" class="btn btn-warning mt-4" disabled>
               Ödül Al (<span id="countdown">20</span> s)
             </button>
@@ -204,11 +204,21 @@
 
   <!-- Bootstrap JS Bundle (Popper Dahil) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Geri Sayım Scripti -->
+  <!-- Üyelik Kontrol ve Geri Sayım Scripti -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      var countdownElem = document.getElementById("countdown");
+      // Üyelik durumunu kontrol et. localStorage'da "isMember" değeri "true" ise üye kabul edilir.
+      var isMember = localStorage.getItem("isMember");
       var rewardButton = document.getElementById("rewardButton");
+      
+      // Eğer üye değilse, ödül butonunu gizle.
+      if(isMember !== "true") {
+        rewardButton.style.display = "none";
+        return;
+      }
+      
+      // Üye ise, 20 saniyelik geri sayımı başlat.
+      var countdownElem = document.getElementById("countdown");
       var timeLeft = 20;
       var interval = setInterval(function() {
         timeLeft--;
