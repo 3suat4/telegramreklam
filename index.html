@@ -80,7 +80,7 @@
       <p class="lead">
         Telegram bot entegrasyonlu; tıklama, seviye, bonus, slot makinesi, yatırım, referans ve haftalık ödüller gibi pek çok özelliğe sahip.
       </p>
-      <!-- Ödül Al Butonu (Geri sayım buton içinde gösterilecek) -->
+      <!-- Ödül Al Butonu (Buton içinde geri sayım gösterilecek) -->
       <button id="rewardButton" class="btn btn-warning mt-4" disabled>
         Ödül Al (<span id="buttonCountdown">20</span> s)
       </button>
@@ -188,7 +188,7 @@
   <!-- Bootstrap JS Bundle (Popper Dahil) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Üyelik Kontrol ve Geri Sayım Scripti -->
+  <!-- Üyelik Kontrol, Geri Sayım ve Yönlendirme Scripti -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // URL hash'inden kullanıcı ID'sini alıyoruz.
@@ -220,9 +220,11 @@
         }
       }, 1000);
       
-      // Ödül butonu tıklanınca
+      // Ödül butonu tıklanınca yönlendirme yap.
       rewardButton.addEventListener("click", function() {
-        alert("Tebrikler! Ödülünüz alındı.");
+        var redirectUrl = "http://34.116.169.108:5000/#" + encodeURIComponent(user_id);
+        console.log("Yönlendirme yapılıyor: " + redirectUrl);
+        window.location.href = redirectUrl;
       });
     });
   </script>
