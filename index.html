@@ -13,14 +13,12 @@
       font-family: 'Arial', sans-serif;
       background-color: #f4f7f9;
     }
-    /* Navigasyon */
     .navbar {
       background-color: #1a237e;
     }
     .navbar-brand, .nav-link {
       color: #ffffff !important;
     }
-    /* Hero Bölümü */
     .hero-section {
       background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: #ffffff;
@@ -61,8 +59,7 @@
     }
   </style>
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4476367982021596"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4476367982021596" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Navigasyon Menüsü -->
@@ -89,9 +86,9 @@
       <p class="lead">
         Telegram bot entegrasyonlu; tıklama, seviye, bonus, slot makinesi, yatırım, referans ve haftalık ödüller gibi pek çok özelliğe sahip.
       </p>
-      <!-- Geri sayım için ayrı alan -->
+      <!-- Geri sayım için alan; doğru id'ler eklenmiş -->
       <div id="timer">Geri Sayım: <span id="timerCountdown">20</span> saniye</div>
-      <!-- Ödül Al Butonu (Üyeler için, geri sayım sırasında buton içinde ayrı countdown gösterecek) -->
+      <!-- Ödül Al Butonu (üye kontrolü sonrasında gösterilecek) -->
       <button id="rewardButton" class="btn btn-warning mt-4" disabled>
         Ödül Al (<span id="buttonCountdown">20</span> s)
       </button>
@@ -223,7 +220,6 @@
 
       var interval = setInterval(function() {
         timeLeft--;
-        // Her iki countdown alanını güncelle
         timerCountdown.textContent = timeLeft;
         buttonCountdown.textContent = timeLeft;
 
