@@ -1,24 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Script çalıştı");
 
-  // URL hash'inden kullanıcı ID'sini alıyoruz
+  // URL hash'inden kullanıcı ID'sini al
   var user_id = window.location.hash.substring(1);
 
-  // İlgili öğeleri tanımla
+  // HTML'deki ilgili öğeleri tanımla
   var rewardButton = document.getElementById("rewardButton");
   var timerElement = document.getElementById("timer");
 
-  // Eğer timer elementi yoksa oluşturuyoruz
+  // Eğer timer elementi yoksa oluştur
   if (!timerElement) {
     timerElement = document.createElement("div");
     timerElement.id = "timer";
     timerElement.style.fontSize = "24px";
     timerElement.style.marginTop = "20px";
-    // Timer'ı uygun bir konteynıra ekleyin; burada body'e ekleniyor.
     document.body.appendChild(timerElement);
   }
 
-  // Eğer kullanıcı ID'si yoksa, ödül butonunu ve timer'ı gizle
+  // Kullanıcı ID'si yoksa ödül butonunu ve geri sayımı gizle
   if (!user_id) {
     console.error("Kullanıcı ID'si eksik.");
     if (rewardButton) rewardButton.style.display = "none";
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  // Eğer kullanıcı zaten yönlendirilmişse, mesajı gösterecek bir alan oluşturuyoruz
+  // Kullanıcı zaten yönlendirilmişse mesaj göster
   if (sessionStorage.getItem("redirected")) {
     var messageElement = document.getElementById("message");
     if (!messageElement) {
@@ -34,22 +33,25 @@ document.addEventListener("DOMContentLoaded", function () {
       messageElement.id = "message";
       messageElement.style.fontSize = "24px";
       messageElement.style.marginTop = "20px";
+      messageElement.style.textAlign = "center";
+      messageElement.style.color = "red";
       document.body.appendChild(messageElement);
     }
-    messageElement.innerText = "Yönlendirildiniz.";
-    // Timer ve ödül butonunu gizle
+    messageElement.innerText = "Zaten yönlendirildiniz.";
+    
+    // Timer ve butonu gizle
     timerElement.style.display = "none";
     if (rewardButton) rewardButton.style.display = "none";
     return;
   }
 
-  // Ödül butonunu başlangıçta gizli tutuyoruz
+  // Ödül butonunu başlangıçta pasif hale getir
   if (rewardButton) {
-    rewardButton.style.display = "none";
+    rewardButton.style.display = "none"; // Başlangıçta butonu gizle
     rewardButton.disabled = true;
   }
 
-  // 20 saniyelik geri sayımı başlatıyoruz
+  // 20 saniyelik geri sayımı başlat
   var seconds = 20;
   timerElement.style.display = "block";
   timerElement.innerText = "Geri Sayım: " + seconds + " saniye";
@@ -57,17 +59,23 @@ document.addEventListener("DOMContentLoaded", function () {
   var interval = setInterval(function () {
     seconds--;
     timerElement.innerText = "Geri Sayım: " + seconds + " saniye";
+    
     if (seconds <= 0) {
       clearInterval(interval);
-      timerElement.style.display = "none";
+      timerElement.style.display = "none"; // Timer'ı gizle
+
+      // Ödül butonunu aktif hale getir
       if (rewardButton) {
         rewardButton.style.display = "inline-block";
         rewardButton.disabled = false;
+        rewardButton.classList.remove("btn-secondary");
+        rewardButton.classList.add("btn-success");
+        rewardButton.textContent = "Ödül Al";
       }
     }
   }, 1000);
 
-  // Ödül Al butonuna tıklama olayı ekle
+  // Ödül Al butonuna tıklama olayı
   if (rewardButton) {
     rewardButton.addEventListener("click", function () {
       if (user_id) {
