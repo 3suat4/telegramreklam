@@ -1,38 +1,153 @@
 <!DOCTYPE html>
-<?php require_once('imp.php'); ?>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name='admaven-placement' content=Bqdg6rdw9>
-  <title>Merhaba</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Telegram bot entegrasyonlu oyun ve ödül sistemi: tıklama, seviye, bonus, slot makinesi, yatırım, referans ve haftalık ödüller.">
+  <title>Gelişmiş Oyun & Ödül Sistemi</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Özel Stil -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- bc.vc Link Kısaltma -->
-  <script type="text/javascript">
-    var bcvc_uid = 424142;
-    var bcvc_cap = 1000000;
-    var bcvc_delay = 5;
-    var bcvc_start = 0;
-  </script>
-  <script src="//bc.vc/js/bcvc_in.js" type="text/javascript"></script>
-  <!-- bc.vc Link Kısaltma Sonu -->
-
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4476367982021596" crossorigin="anonymous"></script>
 </head>
 <body>
-  <main>
-    <h1 id="baslik">Merhaba!</h1>
-    <div id="timer"></div>
-    <!-- Ödül Al Butonu: İlk başta gizli -->
-    <button id="rewardButton" style="display: none;">Ödül Al</button>
-  </main>
+  <!-- En Üstte Her Zaman Görünen Ödül Al Butonu -->
+  <div class="container-fluid bg-light py-2">
+    <div class="text-center">
+      <button id="rewardButton" class="btn btn-primary btn-lg">Ödül Al</button>
+    </div>
+  </div>
 
-  <!-- ACLIB Otomatik Reklam Kodu -->
-  <script type="text/javascript">
-    aclib.runAutoTag({ bölgeId: "jhjjvljs84" });
-  </script>
+  <!-- Navigasyon Menüsü -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Oyun & Ödül Sistemi</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+         <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
+            <li class="nav-item"><a class="nav-link" href="privacy.html">Gizlilik Politikası</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
+         </ul>
+      </div>
+    </div>
+  </nav>
 
-  <!-- Site İçin Genel Script -->
+  <!-- Hero Bölümü ve AdSense Reklam Alanı -->
+  <section class="py-5 bg-secondary text-white">
+    <div class="container">
+      <div class="row align-items-center">
+         <div class="col-md-8">
+            <h1 class="display-4">Gelişmiş Oyun & Ödül Sistemi</h1>
+            <p class="lead">Telegram bot entegrasyonlu; tıklama, seviye, bonus, slot makinesi, yatırım, referans ve haftalık ödüller gibi pek çok özelliğe sahip.</p>
+         </div>
+         <div class="col-md-4">
+           <!-- Google AdSense Reklam Slotu -->
+           <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4476367982021596"
+                data-ad-slot="1234567890"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+           <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+           </script>
+         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sistem Açıklama Bölümü -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="mb-4">Sistem Hakkında</h2>
+      <p>
+         Bu sistem, arka planda çalışan Telegram botu ile entegre çalışarak kullanıcıların eğlenceli bir oyun deneyimi yaşamasını sağlıyor. Aşağıda, sistemde bulunan temel özellikler sade bir dille anlatılmıştır:
+      </p>
+      <div class="accordion" id="systemFeatures">
+        <!-- Tıklama ve Puan Kazanma -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+              Tıklama ve Puan Kazanma
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#systemFeatures">
+            <div class="accordion-body">
+              Her tıklamada, kullanıcı mevcut seviyesine göre belirli miktarda puan kazanır. Seviye yükseldikçe, her tıklama daha fazla puan getirir.
+            </div>
+          </div>
+        </div>
+        <!-- Seviye Yükseltme ve Bonuslar -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+              Seviye Yükseltme ve Bonuslar
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#systemFeatures">
+            <div class="accordion-body">
+              Kazandığınız puanlarla seviyenizi yükseltebilir, günlük ve saatlik bonuslarla ekstra puanlar elde edebilirsiniz.
+            </div>
+          </div>
+        </div>
+        <!-- Slot Makinesi -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+              Slot Makinesi
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#systemFeatures">
+            <div class="accordion-body">
+              Günlük slot hakkınızı kullanarak şansınızı deneyin. Üç aynı sembol büyük kazanç, iki aynı sembol orta kazanç, aksi halde küçük kazanç sağlar.
+            </div>
+          </div>
+        </div>
+        <!-- Yatırım ve Referans Sistemi -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+              Yatırım ve Referans Sistemi
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#systemFeatures">
+            <div class="accordion-body">
+              Puanlarınızı yatırıma çevirerek belirli süre sonunda ek kazanç elde edebilir, arkadaşlarınızı davet ederek referans bonusları kazanabilirsiniz.
+            </div>
+          </div>
+        </div>
+        <!-- Haftalık Ödüller -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+              Haftalık Ödüller
+            </button>
+          </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#systemFeatures">
+            <div class="accordion-body">
+              Lider tablosunda üst sıralarda yer alan kullanıcılar, haftalık olarak ekstra puan ödülleri ile ödüllendirilir.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+      <p>&copy; 2025 Oyun & Ödül Sistemi. Tüm hakları saklıdır.</p>
+      <p><a href="privacy.html" class="text-white">Gizlilik Politikası</a> | <a href="contact.html" class="text-white">İletişim</a></p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (Popper dahil) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
