@@ -5,22 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Telegram bot entegrasyonlu oyun ve ödül sistemi: tıklama, seviye, bonus, slot makinesi, yatırım, referans ve haftalık ödüller.">
   <title>Gelişmiş Oyun & Ödül Sistemi</title>
-
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
   <!-- Custom CSS -->
   <style>
     body {
       font-family: 'Arial', sans-serif;
       background-color: #f4f7f9;
     }
+    /* Navigasyon */
     .navbar {
       background-color: #1a237e;
     }
     .navbar-brand, .nav-link {
       color: #ffffff !important;
     }
+    /* Hero Bölümü */
     .hero-section {
       background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: #ffffff;
@@ -41,7 +41,7 @@
       border-radius: 50px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-      display: none;
+      display: none; /* Başlangıçta gizli */
     }
     #rewardButton:hover:not(:disabled) {
       transform: scale(1.05);
@@ -60,12 +60,12 @@
       color: #ffc107;
     }
   </style>
-
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4476367982021596" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4476367982021596"
+     crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Navigasyon -->
+  <!-- Navigasyon Menüsü -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="#">Oyun & Ödül Sistemi</a>
@@ -89,12 +89,16 @@
       <p class="lead">
         Telegram bot entegrasyonlu; tıklama, seviye, bonus, slot makinesi, yatırım, referans ve haftalık ödüller gibi pek çok özelliğe sahip.
       </p>
-      <div id="timer">Geri Sayım: <span id="countdown">20</span> saniye</div>
-      <button id="rewardButton" class="btn btn-secondary mt-4" disabled>Ödül Al (<span id="countdown">20</span> s)</button>
+      <!-- Geri sayım için ayrı alan -->
+      <div id="timer">Geri Sayım: <span id="timerCountdown">20</span> saniye</div>
+      <!-- Ödül Al Butonu (Üyeler için, geri sayım sırasında buton içinde ayrı countdown gösterecek) -->
+      <button id="rewardButton" class="btn btn-warning mt-4" disabled>
+        Ödül Al (<span id="buttonCountdown">20</span> s)
+      </button>
     </div>
   </section>
 
-  <!-- AdSense Reklam -->
+  <!-- AdSense Reklam Alanı -->
   <section class="container my-4 text-center">
     <ins class="adsbygoogle"
          style="display:block"
@@ -107,6 +111,83 @@
     </script>
   </section>
 
+  <!-- Sistem Açıklama Bölümü -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Sistem Hakkında</h2>
+      <p class="text-center mb-5">
+         Bu sistem, arka planda çalışan Telegram botu ile entegre çalışarak kullanıcıların eğlenceli bir oyun deneyimi yaşamasını sağlıyor. Aşağıda, sistemde bulunan temel özellikler sade bir dille anlatılmıştır:
+      </p>
+      <div class="accordion" id="systemFeatures">
+        <!-- Tıklama ve Puan Kazanma -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+              Tıklama ve Puan Kazanma
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#systemFeatures">
+            <div class="accordion-body">
+              Her tıklamada, kullanıcı mevcut seviyesine göre belirli miktarda puan kazanır. Seviye yükseldikçe, her tıklama daha fazla puan getirir.
+            </div>
+          </div>
+        </div>
+        <!-- Seviye Yükseltme ve Bonuslar -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+              Seviye Yükseltme ve Bonuslar
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#systemFeatures">
+            <div class="accordion-body">
+              Kazandığınız puanlarla seviyenizi yükseltebilir, günlük ve saatlik bonuslarla ekstra puanlar elde edebilirsiniz.
+            </div>
+          </div>
+        </div>
+        <!-- Slot Makinesi -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+              Slot Makinesi
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#systemFeatures">
+            <div class="accordion-body">
+              Günlük slot hakkınızı kullanarak şansınızı deneyin. Üç aynı sembol büyük kazanç, iki aynı sembol orta kazanç, aksi halde küçük kazanç sağlar.
+            </div>
+          </div>
+        </div>
+        <!-- Yatırım ve Referans Sistemi -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+              Yatırım ve Referans Sistemi
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#systemFeatures">
+            <div class="accordion-body">
+              Puanlarınızı yatırıma çevirerek belirli süre sonunda ek kazanç elde edebilir, arkadaşlarınızı davet ederek referans bonusları kazanabilirsiniz.
+            </div>
+          </div>
+        </div>
+        <!-- Haftalık Ödüller -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+              Haftalık Ödüller
+            </button>
+          </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#systemFeatures">
+            <div class="accordion-body">
+              Lider tablosunda üst sıralarda yer alan kullanıcılar, haftalık olarak ekstra puan ödülleri ile ödüllendirilir.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="py-4 text-white">
     <div class="container text-center">
@@ -115,33 +196,36 @@
     </div>
   </footer>
 
-  <!-- Bootstrap JS -->
+  <!-- Bootstrap JS Bundle (Popper Dahil) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Ödül Butonu Geri Sayım & Üyelik Kontrolü -->
+  <!-- Üyelik Kontrol ve Geri Sayım Scripti -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var isMember = localStorage.getItem("isMember");
       var rewardButton = document.getElementById("rewardButton");
-      var countdownElem = document.getElementById("countdown");
       var timerElem = document.getElementById("timer");
+      var timerCountdown = document.getElementById("timerCountdown");
+      var buttonCountdown = document.getElementById("buttonCountdown");
 
-      // Üye değilse butonu ve geri sayımı gizle
+      // Üyelik kontrolü: Üye değilse ödül butonunu ve timer'ı gizle.
       if (!isMember || isMember !== "true") {
         rewardButton.style.display = "none";
         timerElem.style.display = "none";
         return;
       }
 
-      // Üye ise geri sayımı başlat
+      // Üye ise geri sayımı başlat.
       var timeLeft = 20;
-      rewardButton.style.display = "inline-block"; // Butonu göster
+      rewardButton.style.display = "inline-block";
       rewardButton.disabled = true;
       rewardButton.classList.add("btn-secondary");
 
       var interval = setInterval(function() {
         timeLeft--;
-        countdownElem.textContent = timeLeft;
+        // Her iki countdown alanını güncelle
+        timerCountdown.textContent = timeLeft;
+        buttonCountdown.textContent = timeLeft;
 
         if (timeLeft <= 0) {
           clearInterval(interval);
@@ -151,13 +235,12 @@
           rewardButton.classList.add("btn-success");
         }
       }, 1000);
-
+      
       // Ödül butonu tıklanınca
       rewardButton.addEventListener("click", function() {
         alert("Tebrikler! Ödülünüz alındı.");
       });
     });
   </script>
-
 </body>
 </html>
