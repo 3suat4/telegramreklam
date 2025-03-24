@@ -10,7 +10,7 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container">
       <a class="navbar-brand" href="index.html">Öğrenci Hap Bilgileri</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -20,7 +20,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
           <li class="nav-item"><a class="nav-link active" href="biyoloji.html">Biyoloji</a></li>
-          <!-- Diğer ders linklerini buraya ekleyebilirsiniz -->
+          <!-- Diğer ders linkleri eklenebilir -->
         </ul>
       </div>
     </div>
@@ -28,7 +28,7 @@
 
   <!-- Biyoloji İçeriği -->
   <div class="container mt-4">
-    <h1>Biyoloji</h1>
+    <h1 class="mb-4">Biyoloji</h1>
     <!-- Sekmeler: AYT ve TYT -->
     <ul class="nav nav-tabs" id="biyolojiTab" role="tablist">
       <li class="nav-item" role="presentation">
@@ -43,44 +43,131 @@
       <div class="tab-pane fade show active" id="ayt" role="tabpanel" aria-labelledby="ayt-tab">
         <h2 class="mt-3">AYT Biyoloji Hap Bilgileri</h2>
         <div class="accordion" id="aytAccordion">
-          <!-- Hücre Biyolojisi -->
+          <!-- 1. Hücre Biyolojisi -->
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingHucrebiyoloji">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHucrebiyoloji" aria-expanded="true" aria-controls="collapseHucrebiyoloji">
-                Hücre Biyolojisi
+            <h2 class="accordion-header" id="headingHucre">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHucre" aria-expanded="true" aria-controls="collapseHucre">
+                1. Hücre Biyolojisi
               </button>
             </h2>
-            <div id="collapseHucrebiyoloji" class="accordion-collapse collapse show" aria-labelledby="headingHucrebiyoloji" data-bs-parent="#aytAccordion">
+            <div id="collapseHucre" class="accordion-collapse collapse show" aria-labelledby="headingHucre" data-bs-parent="#aytAccordion">
               <div class="accordion-body">
                 <ul>
-                  <li>Hayvan ve bitki hücrelerinin temel yapısı</li>
-                  <li>Organellerin görevleri (özellikle mitokondri, ribozom, çekirdek vb.)</li>
-                  <li>Hücre bölünmesi: mitoz ve mayoz süreçleri</li>
+                  <li>Hayvan ve bitki hücrelerinin yapısı</li>
+                  <li>Organeller ve görevleri (mitokondri, ribozom, çekirdek vb.)</li>
+                  <li>Hücre bölünmesi: Mitoz ve mayoz süreçleri</li>
                 </ul>
-                <p>PDF’den alınan özet bilgilerle detaylandırılabilir.</p>
+                <p>PDF’deki özet bilgiler doğrultusunda detaylandırılacak.</p>
               </div>
             </div>
           </div>
-          <!-- Genetik -->
+          <!-- 2. Biyokimya -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingBiyokimya">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBiyokimya" aria-expanded="false" aria-controls="collapseBiyokimya">
+                2. Biyokimya
+              </button>
+            </h2>
+            <div id="collapseBiyokimya" class="accordion-collapse collapse" aria-labelledby="headingBiyokimya" data-bs-parent="#aytAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li>Biyolojik moleküller: Karbonhidratlar, proteinler, lipidler, nükleik asitler</li>
+                  <li>Metabolizma ve enzimlerin rolü</li>
+                  <li>ATP ve enerji dönüşümleri</li>
+                </ul>
+                <p>Özet bilgilerin kısa anlatımı yer alacak.</p>
+              </div>
+            </div>
+          </div>
+          <!-- 3. Genetik -->
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingGenetik">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGenetik" aria-expanded="false" aria-controls="collapseGenetik">
-                Genetik
+                3. Genetik
               </button>
             </h2>
             <div id="collapseGenetik" class="accordion-collapse collapse" aria-labelledby="headingGenetik" data-bs-parent="#aytAccordion">
               <div class="accordion-body">
                 <ul>
-                  <li>DNA ve RNA’nın yapısı ve işlevi</li>
-                  <li>Protein sentezinin mekanizmaları</li>
+                  <li>DNA ve RNA’nın yapısı, fonksiyonları</li>
+                  <li>Protein sentezinin mekanizması</li>
                   <li>Mendel genetiği ve kalıtım prensipleri</li>
                 </ul>
-                <p>Özet bilgiler PDF içeriğinden derlenebilir.</p>
+                <p>PDF’deki içerik doğrultusunda özetlenecek.</p>
               </div>
             </div>
           </div>
-          <!-- Diğer bölümler için yeni accordion item ekleyin -->
-          <!-- Örnek: Evrim & Taksonomi, Fizyoloji, Ekoloji vb. -->
+          <!-- 4. Evrim ve Taksonomi -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEvrim">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEvrim" aria-expanded="false" aria-controls="collapseEvrim">
+                4. Evrim ve Taksonomi
+              </button>
+            </h2>
+            <div id="collapseEvrim" class="accordion-collapse collapse" aria-labelledby="headingEvrim" data-bs-parent="#aytAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li>Evrimsel mekanizmalar: Doğal seçilim, mutasyon, gen sürüklenmesi</li>
+                  <li>Taksonomik sınıflandırma ve tür oluşumu</li>
+                </ul>
+                <p>Kısa özet bilgiler burada yer alacak.</p>
+              </div>
+            </div>
+          </div>
+          <!-- 5. Fizyoloji -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFizyoloji">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFizyoloji" aria-expanded="false" aria-controls="collapseFizyoloji">
+                5. Fizyoloji
+              </button>
+            </h2>
+            <div id="collapseFizyoloji" class="accordion-collapse collapse" aria-labelledby="headingFizyoloji" data-bs-parent="#aytAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li>İnsan ve hayvan sistemlerinin işleyişi</li>
+                  <li>Sindirim, dolaşım, solunum, sinir sistemleri</li>
+                  <li>Hormonlar ve endokrin sistem</li>
+                </ul>
+                <p>PDF özetlerinden derlenecek bilgiler burada özetlenecek.</p>
+              </div>
+            </div>
+          </div>
+          <!-- 6. Ekoloji -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEkoloji">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEkoloji" aria-expanded="false" aria-controls="collapseEkoloji">
+                6. Ekoloji
+              </button>
+            </h2>
+            <div id="collapseEkoloji" class="accordion-collapse collapse" aria-labelledby="headingEkoloji" data-bs-parent="#aytAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li>Ekosistemlerin yapısı ve işleyişi</li>
+                  <li>Enerji akışı, besin zincirleri</li>
+                  <li>Çevresel etkileşimler</li>
+                </ul>
+                <p>Özet bilgiler PDF’den aktarılacak.</p>
+              </div>
+            </div>
+          </div>
+          <!-- 7. Biyoteknoloji -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingBiyoteknoloji">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBiyoteknoloji" aria-expanded="false" aria-controls="collapseBiyoteknoloji">
+                7. Biyoteknoloji
+              </button>
+            </h2>
+            <div id="collapseBiyoteknoloji" class="accordion-collapse collapse" aria-labelledby="headingBiyoteknoloji" data-bs-parent="#aytAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li>Gen mühendisliği, klonlama ve biyolojik uygulamalar</li>
+                  <li>Güncel biyoteknoloji gelişmeleri</li>
+                </ul>
+                <p>PDF özet bilgileri doğrultusunda detaylandırılacak.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Ek konular eklenebilir -->
         </div>
       </div>
       <!-- TYT Bölümü (İçerik Eklenecek) -->
