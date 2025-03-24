@@ -12,7 +12,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Öğrenci Hap Bilgileri</a>
+      <a class="navbar-brand" href="#">Öğrenci Hap Bilgileri</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,58 +20,60 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="index.html">Ana Sayfa</a></li>
           <li class="nav-item"><a class="nav-link" href="biyoloji.html">Biyoloji</a></li>
-          <!-- Diğer dersler eklenebilir -->
+          <!-- Diğer ders linkleri eklenebilir -->
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Ana İçerik: Ders Kartları -->
-  <header class="bg-primary text-white py-5">
-    <div class="container text-center">
-      <h1 class="display-4">Dersler</h1>
-      <p class="lead">Sınavlara hızlıca hazırlanın, hap bilgilerle konuları kavrayın!</p>
+  <!-- Ana İçerik -->
+  <header class="bg-primary text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-4">Derslerinize Hızlıca Hakim Olun</h1>
+      <p class="lead">Hızlı, özet ve akılda kalıcı bilgileri keşfedin.</p>
     </div>
   </header>
 
-  <main class="container my-5">
-    <div class="row g-4">
+  <!-- Ders Kartları -->
+  <section class="container my-5">
+    <h2 class="mb-4 text-center">Dersler</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
       <!-- Biyoloji Kartı -->
-      <div class="col-md-4">
+      <div class="col">
         <div class="card h-100 shadow-sm">
-          <div class="card-body">
+          <div class="card-body text-center">
             <h5 class="card-title">Biyoloji</h5>
-            <p class="card-text">TYT &amp; AYT konularını derinlemesine hap bilgilerle öğrenin.</p>
-            <a href="biyoloji.html" class="btn btn-outline-primary">Detaylar</a>
+            <p class="card-text">Hücre biyolojisinden ekolojiye kadar, tüm konularda özet bilgiler.</p>
+            <a href="biyoloji.html" class="btn btn-primary">Detaylar</a>
           </div>
         </div>
       </div>
-      <!-- Diğer dersler için örnek kartlar: -->
-      <div class="col-md-4">
+      <!-- Diğer ders kartları (örnek) -->
+      <div class="col">
         <div class="card h-100 shadow-sm">
-          <div class="card-body">
+          <div class="card-body text-center">
             <h5 class="card-title">Matematik</h5>
-            <p class="card-text">Formüller, örnek sorular ve hızlı özetlerle matematiği kavrayın.</p>
-            <a href="#" class="btn btn-outline-primary disabled">Yakında</a>
+            <p class="card-text">Konu özetleri, püf noktalar ve soru örnekleri.</p>
+            <a href="#" class="btn btn-secondary disabled">Yakında</a>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col">
         <div class="card h-100 shadow-sm">
-          <div class="card-body">
+          <div class="card-body text-center">
             <h5 class="card-title">Fizik</h5>
-            <p class="card-text">Temel prensipler ve örnek problemlerle konuları pekiştirin.</p>
-            <a href="#" class="btn btn-outline-primary disabled">Yakında</a>
+            <p class="card-text">Temel kavramlardan uygulamalara kadar her şey burada.</p>
+            <a href="#" class="btn btn-secondary disabled">Yakında</a>
           </div>
         </div>
       </div>
     </div>
-  </main>
+  </section>
 
   <!-- Footer -->
-  <footer class="bg-light py-3">
-    <div class="container text-center">
-      <span class="text-muted">&copy; 2025 Öğrenci Hap Bilgileri</span>
+  <footer class="bg-light text-center py-3">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Öğrenci Hap Bilgileri. Tüm hakları saklıdır.</p>
     </div>
   </footer>
 
