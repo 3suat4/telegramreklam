@@ -5,14 +5,36 @@ body {
   color: #343a40;
 }
 
-h1, h2 {
-  margin-bottom: 20px;
+/* Navbar */
+.navbar-brand {
+  font-weight: bold;
 }
 
+/* Header */
+header {
+  background: linear-gradient(135deg, #0d6efd, #1e90ff);
+}
+
+/* Ders Kartları */
+.card {
+  border: none;
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Accordion */
 .accordion-button {
   background-color: #e9ecef;
+  font-weight: 500;
 }
-
 .accordion-body {
   background-color: #fff;
+}
+
+/* Footer */
+footer {
+  font-size: 0.9rem;
 }
