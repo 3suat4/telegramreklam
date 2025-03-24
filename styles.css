@@ -1,0 +1,18 @@
+/* Genel stil ayarları */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+}
+
+.accordion-button {
+  background-color: #e9ecef;
+}
+
+.accordion-body {
+  background-color: #fff;
+}
